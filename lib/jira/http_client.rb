@@ -34,7 +34,7 @@ module JIRA
       puts "-------- Is use_APIToken true? --------"
       if options[:use_APIToken]
         puts "-------- use_APIToken true --------"
-        request.add_field 'Authorization', options[:APIToken]
+        request.add_field 'Authorization', 'Basic #{options[:APIToken]}'
         puts request['Authorization'] 
       else
         request.basic_auth(@options[:username], @options[:password]) if @options[:username] && @options[:password]
