@@ -33,8 +33,9 @@ module JIRA
       add_cookies(request) if options[:use_cookies]
       puts "-------- Is use_APIToken true? --------"
       if options[:use_APIToken]
-        request.add_field 'Authorization', options[:APIToken]
         puts "-------- use_APIToken true --------"
+        request.add_field 'Authorization', options[:APIToken]
+        puts request['Authorization'] 
       else
         request.basic_auth(@options[:username], @options[:password]) if @options[:username] && @options[:password]
       end
