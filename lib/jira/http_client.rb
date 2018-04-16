@@ -31,8 +31,10 @@ module JIRA
       request = Net::HTTP.const_get(http_method.to_s.capitalize).new(path, headers)
       request.body = body unless body.nil?
       add_cookies(request) if options[:use_cookies]
+      puts "-------- Is use_APIToken true? --------"
       if options[:use_APIToken]
         request.add_field 'Authorization', options[:APIToken]
+        puts "-------- use_APIToken true --------"
       else
         request.basic_auth(@options[:username], @options[:password]) if @options[:username] && @options[:password]
       end
